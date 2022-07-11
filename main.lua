@@ -6,15 +6,19 @@ function save.profile(name)
 end
 
 function save.save(profile, dataname, data)
-    writefile(profile.."/"..dataname, data)
+    if isfolder(profile) then
+        writefile(profile.."/"..dataname, data)
+    end
 end
 
 function save.load(profile, dataname)
-    if isfile(profile.."/"..dataname) then
+    if isfolder(profile) and isfile(profile.."/"..dataname) then
         return readfile(profile.."/"..dataname)
     end
 end
 
 function save.overwrite(profile, dataname)
-    appendfile(profile.."/"..dataname, data)
+    if isfolder(profile) then
+        appendfile(profile.."/"..dataname, data)
+    end
 end
