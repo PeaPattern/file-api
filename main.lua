@@ -17,6 +17,10 @@ function FileAPI.load(profile, dataname)
     end
 end
 
+function FileAPI.exists(profile, dataname)
+    return (isfolder(profile) and isfile(profile.."/"..dataname))
+end
+
 function FileAPI.overwrite(profile, dataname)
     if isfolder(profile) then
         appendfile(profile.."/"..dataname, data)
